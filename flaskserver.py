@@ -15,6 +15,7 @@ from sklearn.decomposition import PCA
 from sklearn.metrics.pairwise import cosine_similarity
 import tensorflow as tf
 from duckduckgo_search import DDGS
+import os
 
 app = Flask(__name__)
 
@@ -79,4 +80,4 @@ def api_find_similar_players():
     return jsonify(similar_players)
 
 if __name__ == '__main__':
-    app.run(port=5007)
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5007)))
